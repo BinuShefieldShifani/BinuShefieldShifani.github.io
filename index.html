@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Binu Shefield Shifani — AI/ML Engineer</title>
+<meta name="description" content="AI/ML Engineer & Master's Researcher in AI and Automation. Thesis at GKN Aerospace. 5+ years at Cognizant."/>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=IBM+Plex+Mono:wght@400;500&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+:root {
+  --bg: #0e0f11;
+  --bg2: #14161a;
+  --bg3: #1c1f25;
+  --border: rgba(255,255,255,0.07);
+  --border-bright: rgba(255,255,255,0.14);
+  --text: #e8e6e0;
+  --text-muted: #7a7870;
+  --text-dim: #4a4845;
+  --accent: #e8a130;
+  --accent2: #2ec4a0;
+  --accent-dim: rgba(232,161,48,0.12);
+  --accent2-dim: rgba(46,196,160,0.1);
+  --red: #e85d3a;
+  --serif: 'DM Serif Display', Georgia, serif;
+  --mono: 'IBM Plex Mono', monospace;
+  --sans: 'DM Sans', sans-serif;
+}
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+html { scroll-behavior: smooth; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--sans);
+  font-size: 16px;
+  line-height: 1.7;
+  overflow-x: hidden;
+}
+
+/* GRAIN OVERLAY */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.35;
+}
+
+/* ── SCROLLBAR ── */
+::-webkit-scrollbar { width: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: var(--border-bright); border-radius: 2px; }
+
+/* ── NAV ── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 1.25rem 4rem;
+  background: rgba(14,15,17,0.85);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--border);
+}
+.nav-logo {
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  color: var(--accent); letter-spacing: 0.05em;
+  text-decoration: none;
+}
+.nav-links { display: flex; gap: 2.5rem; list-style: none; }
+.nav-links a {
+  font-family: var(--mono); font-size: 12px; color: var(--text-muted);
+  text-decoration: none; letter-spacing: 0.08em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--text); }
+.nav-cta {
+  font-family: var(--mono); font-size: 12px; font-weight: 500;
+  color: var(--bg); background: var(--accent); border: none;
+  padding: 0.5rem 1.2rem; border-radius: 3px; cursor: pointer;
+  text-decoration: none; letter-spacing: 0.06em; text-transform: uppercase;
+  transition: opacity 0.2s;
+}
+.nav-cta:hover { opacity: 0.85; }
+
+/* ── HERO ── */
+#hero {
+  min-height: 100vh;
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 8rem 4rem 4rem;
+  position: relative;
+  overflow: hidden;
+}
+.hero-grid-bg {
+  position: absolute; inset: 0;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+  background-size: 80px 80px;
+  mask-image: radial-gradient(ellipse 80% 60% at 50% 50%, black 30%, transparent 100%);
+}
+.hero-tag {
+  font-family: var(--mono); font-size: 12px; color: var(--accent2);
+  letter-spacing: 0.12em; text-transform: uppercase; margin-bottom: 1.5rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.hero-tag::before {
+  content: ''; display: inline-block;
+  width: 32px; height: 1px; background: var(--accent2);
+}
+.hero-name {
+  font-family: var(--serif); font-size: clamp(3.5rem, 8vw, 7rem);
+  font-weight: 400; line-height: 1.0; color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.hero-name em {
+  font-style: italic; color: var(--accent);
+}
+.hero-title {
+  font-family: var(--mono); font-size: clamp(13px, 1.4vw, 16px);
+  color: var(--text-muted); letter-spacing: 0.04em;
+  margin-bottom: 2rem; line-height: 1.8;
+}
+.hero-desc {
+  max-width: 560px; font-size: 15px; color: var(--text-muted);
+  font-weight: 300; margin-bottom: 3rem; line-height: 1.8;
+}
+.hero-actions { display: flex; gap: 1rem; flex-wrap: wrap; }
+.btn-primary {
+  font-family: var(--mono); font-size: 13px; font-weight: 500;
+  background: var(--accent); color: var(--bg);
+  padding: 0.85rem 2rem; border-radius: 3px; text-decoration: none;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  transition: opacity 0.2s, transform 0.15s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-primary:hover { opacity: 0.88; transform: translateY(-1px); }
+.btn-ghost {
+  font-family: var(--mono); font-size: 13px;
+  border: 1px solid var(--border-bright); color: var(--text);
+  padding: 0.85rem 2rem; border-radius: 3px; text-decoration: none;
+  letter-spacing: 0.06em; text-transform: uppercase;
+  transition: border-color 0.2s, transform 0.15s;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+}
+.btn-ghost:hover { border-color: var(--accent); color: var(--accent); transform: translateY(-1px); }
+.hero-stats {
+  position: absolute; right: 4rem; bottom: 4rem;
+  display: flex; flex-direction: column; gap: 2rem;
+}
+.stat-item { text-align: right; }
+.stat-num {
+  font-family: var(--serif); font-size: 2.5rem; color: var(--accent);
+  line-height: 1;
+}
+.stat-label {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: 0.1em; text-transform: uppercase;
+}
+.hero-scroll {
+  position: absolute; bottom: 2rem; left: 4rem;
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: 0.1em; text-transform: uppercase;
+  display: flex; align-items: center; gap: 0.75rem;
+  writing-mode: vertical-rl; transform: rotate(180deg);
+  animation: pulse 2.5s ease-in-out infinite;
+}
+@keyframes pulse { 0%,100%{opacity:0.4} 50%{opacity:1} }
+
+/* ── SECTIONS ── */
+section { padding: 6rem 4rem; }
+.section-label {
+  font-family: var(--mono); font-size: 11px; color: var(--accent);
+  letter-spacing: 0.14em; text-transform: uppercase;
+  margin-bottom: 0.75rem;
+  display: flex; align-items: center; gap: 0.75rem;
+}
+.section-label::after {
+  content: ''; flex: 1; max-width: 60px; height: 1px; background: var(--accent);
+}
+.section-heading {
+  font-family: var(--serif); font-size: clamp(2rem, 4vw, 3rem);
+  font-weight: 400; color: var(--text); margin-bottom: 3rem; line-height: 1.2;
+}
+
+/* ── ABOUT ── */
+#about { background: var(--bg2); }
+.about-grid {
+  display: grid; grid-template-columns: 1.2fr 1fr; gap: 5rem; align-items: start;
+}
+.about-text p {
+  font-size: 15px; color: var(--text-muted); font-weight: 300;
+  margin-bottom: 1.25rem; line-height: 1.9;
+}
+.about-text p strong { color: var(--text); font-weight: 500; }
+.about-highlight {
+  border-left: 2px solid var(--accent);
+  padding: 1rem 1.5rem; margin: 2rem 0;
+  background: var(--accent-dim);
+  font-family: var(--serif); font-size: 1.1rem;
+  font-style: italic; color: var(--text);
+  line-height: 1.6;
+}
+.skills-block { display: flex; flex-direction: column; gap: 1.5rem; }
+.skill-group-label {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 0.6rem;
+}
+.skill-tags { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.tag {
+  font-family: var(--mono); font-size: 11px; font-weight: 500;
+  padding: 0.3rem 0.7rem; border-radius: 3px;
+  letter-spacing: 0.04em;
+}
+.tag-core { background: var(--bg3); color: var(--text-muted); border: 1px solid var(--border); }
+.tag-ai { background: var(--accent2-dim); color: var(--accent2); border: 1px solid rgba(46,196,160,0.2); }
+.tag-cloud { background: rgba(100,130,255,0.08); color: #8aabff; border: 1px solid rgba(100,130,255,0.18); }
+.tag-sec { background: rgba(232,93,58,0.08); color: #e87d5a; border: 1px solid rgba(232,93,58,0.18); }
+
+/* ── EXPERIENCE ── */
+#experience { background: var(--bg); }
+.exp-timeline { position: relative; }
+.exp-timeline::before {
+  content: ''; position: absolute; left: 0; top: 0; bottom: 0;
+  width: 1px; background: var(--border);
+}
+.exp-item {
+  padding: 0 0 3rem 2.5rem; position: relative;
+}
+.exp-item::before {
+  content: ''; position: absolute; left: -4px; top: 6px;
+  width: 9px; height: 9px; border-radius: 50%;
+  background: var(--bg); border: 2px solid var(--accent);
+}
+.exp-meta {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem;
+}
+.exp-role {
+  font-family: var(--serif); font-size: 1.35rem; color: var(--text);
+  margin-bottom: 0.25rem;
+}
+.exp-company {
+  font-family: var(--mono); font-size: 13px; color: var(--accent);
+  margin-bottom: 1rem;
+}
+.exp-tags { display: flex; flex-wrap: wrap; gap: 0.4rem; margin-bottom: 1rem; }
+.exp-bullets { list-style: none; display: flex; flex-direction: column; gap: 0.5rem; }
+.exp-bullets li {
+  font-size: 14px; color: var(--text-muted); font-weight: 300;
+  padding-left: 1.2rem; position: relative;
+}
+.exp-bullets li::before {
+  content: '→'; position: absolute; left: 0;
+  color: var(--accent2); font-size: 12px;
+}
+
+/* ── PROJECTS ── */
+#projects { background: var(--bg2); }
+.projects-header {
+  display: flex; justify-content: space-between; align-items: flex-end;
+  margin-bottom: 3rem; flex-wrap: wrap; gap: 1rem;
+}
+.live-badge {
+  font-family: var(--mono); font-size: 11px; color: var(--accent2);
+  display: flex; align-items: center; gap: 0.5rem;
+  letter-spacing: 0.08em; text-transform: uppercase;
+}
+.live-dot {
+  width: 7px; height: 7px; border-radius: 50%; background: var(--accent2);
+  animation: blink 1.6s ease-in-out infinite;
+}
+@keyframes blink { 0%,100%{opacity:1} 50%{opacity:0.2} }
+.projects-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+  gap: 1.5px; background: var(--border);
+  border: 1px solid var(--border);
+}
+.project-card {
+  background: var(--bg2); padding: 2rem;
+  transition: background 0.25s;
+  cursor: pointer; text-decoration: none; display: block;
+  position: relative; overflow: hidden;
+}
+.project-card::before {
+  content: ''; position: absolute; top: 0; left: 0; right: 0;
+  height: 2px; background: var(--accent2);
+  transform: scaleX(0); transform-origin: left;
+  transition: transform 0.3s ease;
+}
+.project-card:hover { background: var(--bg3); }
+.project-card:hover::before { transform: scaleX(1); }
+.project-lang {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: 0.08em; text-transform: uppercase;
+  margin-bottom: 0.75rem; display: flex; align-items: center; gap: 0.5rem;
+}
+.lang-dot { width: 8px; height: 8px; border-radius: 50%; flex-shrink: 0; }
+.project-name {
+  font-family: var(--serif); font-size: 1.15rem; color: var(--text);
+  margin-bottom: 0.6rem; line-height: 1.3;
+}
+.project-desc {
+  font-size: 13px; color: var(--text-muted); font-weight: 300;
+  line-height: 1.7; margin-bottom: 1.25rem;
+  display: -webkit-box; -webkit-line-clamp: 3;
+  -webkit-box-orient: vertical; overflow: hidden;
+}
+.project-meta {
+  display: flex; align-items: center; justify-content: space-between;
+}
+.project-stats {
+  display: flex; gap: 1rem;
+}
+.project-stat {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  display: flex; align-items: center; gap: 0.3rem;
+}
+.project-arrow {
+  font-size: 16px; color: var(--border-bright);
+  transition: color 0.2s, transform 0.2s;
+}
+.project-card:hover .project-arrow { color: var(--accent2); transform: translate(2px,-2px); }
+.projects-loading, .projects-error {
+  grid-column: 1/-1; padding: 4rem;
+  text-align: center; font-family: var(--mono); font-size: 13px;
+  color: var(--text-dim);
+}
+.load-spinner {
+  width: 24px; height: 24px; border: 2px solid var(--border);
+  border-top-color: var(--accent2); border-radius: 50%;
+  animation: spin 0.7s linear infinite; margin: 0 auto 1rem;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* ── EDUCATION ── */
+#education { background: var(--bg); }
+.edu-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2rem; }
+.edu-card {
+  border: 1px solid var(--border); padding: 2rem;
+  border-radius: 4px; background: var(--bg2);
+  position: relative; overflow: hidden;
+  transition: border-color 0.25s;
+}
+.edu-card:hover { border-color: var(--border-bright); }
+.edu-card-accent {
+  position: absolute; top: 0; right: 0;
+  width: 60px; height: 60px;
+  background: var(--accent-dim);
+  border-radius: 0 4px 0 60px;
+}
+.edu-period {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: 0.08em; margin-bottom: 0.5rem;
+}
+.edu-degree {
+  font-family: var(--serif); font-size: 1.2rem; color: var(--text);
+  margin-bottom: 0.3rem; line-height: 1.3;
+}
+.edu-institution {
+  font-family: var(--mono); font-size: 13px; color: var(--accent);
+  margin-bottom: 1rem;
+}
+.edu-courses {
+  font-size: 13px; color: var(--text-muted); font-weight: 300;
+  line-height: 1.8;
+}
+.certs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(260px,1fr)); gap: 1rem; margin-top: 3rem; }
+.cert-card {
+  border: 1px solid var(--border); padding: 1.25rem 1.5rem;
+  border-radius: 4px; background: var(--bg2);
+  display: flex; align-items: flex-start; gap: 1rem;
+  transition: border-color 0.25s;
+}
+.cert-card:hover { border-color: var(--accent); }
+.cert-icon {
+  font-size: 1.4rem; flex-shrink: 0; margin-top: 2px;
+}
+.cert-name { font-size: 13px; color: var(--text); font-weight: 400; line-height: 1.5; }
+.cert-issuer { font-family: var(--mono); font-size: 11px; color: var(--text-dim); margin-top: 2px; }
+
+/* ── CONTACT ── */
+#contact {
+  background: var(--bg2);
+  text-align: center;
+}
+.contact-inner { max-width: 600px; margin: 0 auto; }
+.contact-tagline {
+  font-family: var(--serif); font-style: italic;
+  font-size: 1.1rem; color: var(--text-muted);
+  margin-bottom: 2.5rem; line-height: 1.7;
+}
+.contact-links { display: flex; justify-content: center; gap: 1rem; flex-wrap: wrap; }
+.contact-link {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.08em;
+  text-transform: uppercase; text-decoration: none;
+  padding: 0.75rem 1.5rem; border-radius: 3px;
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  transition: all 0.2s;
+}
+.contact-link.primary {
+  background: var(--accent); color: var(--bg);
+}
+.contact-link.primary:hover { opacity: 0.85; }
+.contact-link.secondary {
+  border: 1px solid var(--border-bright); color: var(--text-muted);
+}
+.contact-link.secondary:hover { border-color: var(--accent2); color: var(--accent2); }
+
+/* ── FOOTER ── */
+footer {
+  padding: 2rem 4rem; border-top: 1px solid var(--border);
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 1rem;
+}
+.footer-copy {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  letter-spacing: 0.06em;
+}
+.footer-right {
+  font-family: var(--mono); font-size: 11px; color: var(--text-dim);
+  display: flex; align-items: center; gap: 0.5rem;
+}
+
+/* ── ANIMATIONS ── */
+.fade-in {
+  opacity: 0; transform: translateY(28px);
+  transition: opacity 0.7s ease, transform 0.7s ease;
+}
+.fade-in.visible { opacity: 1; transform: translateY(0); }
+
+/* ── RESPONSIVE ── */
+@media (max-width: 900px) {
+  nav { padding: 1rem 1.5rem; }
+  .nav-links { display: none; }
+  #hero { padding: 7rem 1.5rem 3rem; }
+  .hero-stats { display: none; }
+  section { padding: 4rem 1.5rem; }
+  .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+  .edu-grid { grid-template-columns: 1fr; }
+  footer { padding: 1.5rem; flex-direction: column; text-align: center; }
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">BSS.dev</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <a class="nav-cta" href="mailto:binushefieldshifani@gmail.com">Hire Me ↗</a>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-grid-bg"></div>
+  <div class="hero-tag">AI/ML Engineer &amp; Researcher</div>
+  <h1 class="hero-name">Binu<br><em>Shefield</em><br>Shifani</h1>
+  <p class="hero-title">
+    MSc AI &amp; Automation · Högskolan Väst, Sweden<br>
+    Master's Thesis @ GKN Aerospace · ex-Cognizant (5+ yrs)
+  </p>
+  <p class="hero-desc">
+    Building intelligent systems that bridge research and real-world impact —
+    from agentic AI pipelines to aerospace manufacturing decision support.
+  </p>
+  <div class="hero-actions">
+    <a class="btn-primary" href="#projects">View Projects ↓</a>
+    <a class="btn-ghost" href="https://github.com/BinuShefieldShifani" target="_blank" rel="noopener">GitHub ↗</a>
+    <a class="btn-ghost" href="https://www.linkedin.com/in/binu-shefield-shifani/" target="_blank" rel="noopener">LinkedIn ↗</a>
+  </div>
+  <div class="hero-stats">
+    <div class="stat-item">
+      <div class="stat-num">5+</div>
+      <div class="stat-label">Years Industry</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">6+</div>
+      <div class="stat-label">AI Projects</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">2</div>
+      <div class="stat-label">Degrees</div>
+    </div>
+  </div>
+  <div class="hero-scroll">Scroll</div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">Who I Am</div>
+  <h2 class="section-heading">Engineer.<br>Researcher. Builder.</h2>
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>I'm an <strong>AI/ML engineer</strong> with 5+ years of industry experience at Cognizant Technology Solutions, now advancing my expertise through a <strong>Master's in AI and Automation</strong> at Högskolan Väst, Sweden.</p>
+      <p>My work bridges cutting-edge AI research and real-world engineering — from building <strong>LLM-powered document pipelines</strong> and agentic AI systems to developing an <strong>AI-Based Decision Support System for Laser Powder Directed Energy Deposition</strong> as my Master's thesis at GKN Aerospace.</p>
+      <div class="about-highlight">"Building intelligent systems that bridge research and real-world impact."</div>
+      <p>I'm passionate about applying AI to solve complex, high-impact problems in <strong>manufacturing, sustainability, and enterprise automation</strong>.</p>
+    </div>
+    <div class="skills-block fade-in">
+      <div>
+        <div class="skill-group-label">Languages &amp; Frameworks</div>
+        <div class="skill-tags">
+          <span class="tag tag-core">Python</span>
+          <span class="tag tag-core">C# .NET</span>
+          <span class="tag tag-core">TypeScript</span>
+          <span class="tag tag-core">Angular</span>
+          <span class="tag tag-core">SQL</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">AI / Machine Learning</div>
+        <div class="skill-tags">
+          <span class="tag tag-ai">PyTorch</span>
+          <span class="tag tag-ai">TensorFlow</span>
+          <span class="tag tag-ai">HuggingFace</span>
+          <span class="tag tag-ai">LangChain</span>
+          <span class="tag tag-ai">LangGraph</span>
+          <span class="tag tag-ai">RAG</span>
+          <span class="tag tag-ai">YOLOv11</span>
+          <span class="tag tag-ai">OpenCV</span>
+          <span class="tag tag-ai">NLP</span>
+          <span class="tag tag-ai">VectorDB</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Cloud &amp; DevOps</div>
+        <div class="skill-tags">
+          <span class="tag tag-cloud">Azure ML</span>
+          <span class="tag tag-cloud">Azure Cognitive</span>
+          <span class="tag tag-cloud">Docker</span>
+          <span class="tag tag-cloud">CI/CD</span>
+          <span class="tag tag-cloud">Git</span>
+        </div>
+      </div>
+      <div>
+        <div class="skill-group-label">Security</div>
+        <div class="skill-tags">
+          <span class="tag tag-sec">SonarQube</span>
+          <span class="tag tag-sec">SAST/DAST</span>
+          <span class="tag tag-sec">Secure SDLC</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Where I've Worked</div>
+  <h2 class="section-heading">Professional<br>Experience</h2>
+  <div class="exp-timeline fade-in">
+
+    <div class="exp-item">
+      <div class="exp-meta">Sep 2024 – Jun 2026 · Current</div>
+      <div class="exp-role">Master's Researcher — AI &amp; Automation</div>
+      <div class="exp-company">Högskolan Väst / GKN Aerospace · Trollhättan, Sweden</div>
+      <div class="exp-tags">
+        <span class="tag tag-ai">LangGraph</span>
+        <span class="tag tag-ai">ChromaDB</span>
+        <span class="tag tag-ai">RAG</span>
+        <span class="tag tag-ai">Agentic AI</span>
+        <span class="tag tag-core">LP-DED</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Developing AI-Based Decision Support System for Laser Powder DED manufacturing at GKN Aerospace</li>
+        <li>Knowledge-based agentic AI with LangGraph + ChromaDB for aerospace repair planning</li>
+        <li>Enhancing quality and efficiency through real-time AI insights in additive manufacturing</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">Dec 2022 – Aug 2024</div>
+      <div class="exp-role">Associate — AI/ML &amp; Full-Stack</div>
+      <div class="exp-company">Cognizant Technology Solutions · Chennai, India</div>
+      <div class="exp-tags">
+        <span class="tag tag-ai">LLMs</span>
+        <span class="tag tag-ai">OCR</span>
+        <span class="tag tag-cloud">Azure</span>
+        <span class="tag tag-core">Python</span>
+        <span class="tag tag-core">C# .NET</span>
+        <span class="tag tag-cloud">Docker</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Enabled multilingual support via LLMs + Azure Translator, expanding global accessibility</li>
+        <li>Led AI-driven unstructured text extraction pipelines using OCR + generative AI</li>
+        <li>Containerised .NET applications with Docker on Linux, optimising deployment efficiency</li>
+        <li>Implemented SAST/DAST/SonarQube security tooling within enterprise SDLC</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">Dec 2020 – Nov 2022</div>
+      <div class="exp-role">Programmer Analyst — AI/ML &amp; .NET</div>
+      <div class="exp-company">Cognizant Technology Solutions · Chennai, India</div>
+      <div class="exp-tags">
+        <span class="tag tag-core">ASP.NET MVC</span>
+        <span class="tag tag-core">Angular</span>
+        <span class="tag tag-ai">ML Models</span>
+        <span class="tag tag-cloud">Azure</span>
+        <span class="tag tag-core">REST APIs</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Architected C# .NET Windows Services for enterprise automation, eliminating manual overhead</li>
+        <li>Built ASP.NET MVC document management platform, improving usability and access speed</li>
+        <li>Developed responsive Angular + TypeScript modules across enterprise applications</li>
+      </ul>
+    </div>
+
+    <div class="exp-item">
+      <div class="exp-meta">Jan 2019 – Dec 2020</div>
+      <div class="exp-role">Programmer Analyst Trainee</div>
+      <div class="exp-company">Cognizant Technology Solutions · Chennai, India</div>
+      <div class="exp-tags">
+        <span class="tag tag-core">Python</span>
+        <span class="tag tag-core">.NET</span>
+        <span class="tag tag-core">SQL</span>
+      </div>
+      <ul class="exp-bullets">
+        <li>Built Python data transformation utilities integrated into .NET workflows via REST APIs</li>
+        <li>Engineered and secured .NET Web APIs, resolving vulnerabilities and ensuring integrations</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PROJECTS — live from GitHub API -->
+<section id="projects">
+  <div class="projects-header">
+    <div>
+      <div class="section-label">What I've Built</div>
+      <h2 class="section-heading" style="margin-bottom:0">Featured<br>Projects</h2>
+    </div>
+    <div class="live-badge">
+      <span class="live-dot"></span>
+      Live from GitHub
+    </div>
+  </div>
+  <div class="projects-grid" id="projects-grid">
+    <div class="projects-loading">
+      <div class="load-spinner"></div>
+      Fetching repositories…
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION & CERTS -->
+<section id="education">
+  <div class="section-label">Academic Path</div>
+  <h2 class="section-heading">Education &amp;<br>Certifications</h2>
+  <div class="edu-grid fade-in">
+    <div class="edu-card">
+      <div class="edu-card-accent"></div>
+      <div class="edu-period">Sep 2024 – Jun 2026 · Current</div>
+      <div class="edu-degree">M.Sc. Artificial Intelligence &amp; Automation</div>
+      <div class="edu-institution">Högskolan Väst · Trollhättan, Sweden</div>
+      <div class="edu-courses">Machine Learning · Deep Learning · Robotics · Big Data · Image Processing · Automation Systems · Cybersecurity</div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-card-accent"></div>
+      <div class="edu-period">Aug 2015 – Apr 2019</div>
+      <div class="edu-degree">B.E. Electronics &amp; Communication Engineering</div>
+      <div class="edu-institution">PSNA College of Engineering &amp; Technology · India</div>
+      <div class="edu-courses">Signal Processing · VLSI · Embedded Systems · Communication Theory · Control Systems</div>
+    </div>
+  </div>
+  <div class="certs-grid fade-in">
+    <div class="cert-card">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">AI for Public Sector Upskilling</div>
+        <div class="cert-issuer">Microsoft</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Introduction to Large Language Models</div>
+        <div class="cert-issuer">Google</div>
+      </div>
+    </div>
+    <div class="cert-card">
+      <div class="cert-icon">🏅</div>
+      <div>
+        <div class="cert-name">Introduction to Generative AI</div>
+        <div class="cert-issuer">Google</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-inner fade-in">
+    <div class="section-label" style="justify-content:center">Get In Touch</div>
+    <h2 class="section-heading">Open to<br>Opportunities</h2>
+    <p class="contact-tagline">
+      Open to research collaborations, AI/ML opportunities,<br>
+      and conversations about sustainable &amp; intelligent tech.
+    </p>
+    <div class="contact-links">
+      <a class="contact-link primary" href="mailto:binushefieldshifani@gmail.com">✉ Email Me</a>
+      <a class="contact-link secondary" href="https://linkedin.com/in/binu-shefield-shifani/" target="_blank" rel="noopener">LinkedIn ↗</a>
+      <a class="contact-link secondary" href="https://github.com/BinuShefieldShifani" target="_blank" rel="noopener">GitHub ↗</a>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-copy">© 2026 Binu Shefield Shifani · BSS.dev</div>
+  <div class="footer-right">
+    Built with ♥ in Sweden
+    <span style="color:var(--border-bright)">·</span>
+    <span style="color:var(--accent2)">●</span> Live
+  </div>
+</footer>
+
+<script>
+// ── GITHUB API — live project fetch ──────────────────────────────────────────
+const GITHUB_USERNAME = 'BinuShefieldShifani';
+
+// Repos to always show at top (pinned) — add new ones here as you create them
+const PINNED = [
+  'lp-ded-agentic-ai-repair-planning',
+  'hole-detection-garments',
+  'vision-robot-pick-place',
+  'furniture-assembly-assistant',
+  '5g-autonomous-network-optimisation',
+  'beckhoff-twincat-assembly-plc',
+];
+
+// Repos to hide (forks, old, etc.)
+const HIDDEN = [
+  'BinuShefieldShifani.github.io',
+  'BinuShefieldShifani',
+];
+
+const LANG_COLORS = {
+  Python: '#3572A5',
+  JavaScript: '#f1e05a',
+  TypeScript: '#2b7489',
+  'Jupyter Notebook': '#DA5B0B',
+  HTML: '#e34c26',
+  CSS: '#563d7c',
+  'C#': '#178600',
+  'Structured Text': '#b07219',
+  Shell: '#89e051',
+  default: '#8a8a8a'
+};
+
+async function loadProjects() {
+  const grid = document.getElementById('projects-grid');
+  try {
+    const res = await fetch(
+      `https://api.github.com/users/${GITHUB_USERNAME}/repos?per_page=100&sort=updated`,
+      { headers: { Accept: 'application/vnd.github+json' } }
+    );
+    if (!res.ok) throw new Error('API error');
+    const repos = await res.json();
+
+    // Filter out hidden & forks
+    const visible = repos.filter(r =>
+      !r.fork &&
+      !HIDDEN.includes(r.name) &&
+      !r.name.toLowerCase().includes('.github.io')
+    );
+
+    // Sort: pinned first, then by updated date
+    visible.sort((a, b) => {
+      const ai = PINNED.indexOf(a.name);
+      const bi = PINNED.indexOf(b.name);
+      if (ai !== -1 && bi !== -1) return ai - bi;
+      if (ai !== -1) return -1;
+      if (bi !== -1) return 1;
+      return new Date(b.updated_at) - new Date(a.updated_at);
+    });
+
+    if (visible.length === 0) {
+      grid.innerHTML = '<div class="projects-error">No public repositories found.</div>';
+      return;
+    }
+
+    grid.innerHTML = visible.map(repo => {
+      const lang = repo.language || 'Code';
+      const color = LANG_COLORS[lang] || LANG_COLORS.default;
+      const desc = repo.description || 'No description provided.';
+      const isPinned = PINNED.includes(repo.name);
+      const stars = repo.stargazers_count;
+      const forks = repo.forks_count;
+      const name = repo.name.replace(/-/g, ' ').replace(/_/g, ' ');
+
+      return `<a class="project-card" href="${repo.html_url}" target="_blank" rel="noopener">
+        <div class="project-lang">
+          <span class="lang-dot" style="background:${color}"></span>
+          ${lang}${isPinned ? ' · <span style="color:var(--accent)">Featured</span>' : ''}
+        </div>
+        <div class="project-name">${name}</div>
+        <div class="project-desc">${desc}</div>
+        <div class="project-meta">
+          <div class="project-stats">
+            ${stars > 0 ? `<span class="project-stat">★ ${stars}</span>` : ''}
+            ${forks > 0 ? `<span class="project-stat">⑂ ${forks}</span>` : ''}
+            <span class="project-stat" style="color:var(--text-dim)">${timeAgo(repo.updated_at)}</span>
+          </div>
+          <span class="project-arrow">↗</span>
+        </div>
+      </a>`;
+    }).join('');
+
+  } catch (e) {
+    grid.innerHTML = `<div class="projects-error">
+      Could not load repositories.<br>
+      <a href="https://github.com/${GITHUB_USERNAME}?tab=repositories" target="_blank"
+         style="color:var(--accent2)">View on GitHub ↗</a>
+    </div>`;
+  }
+}
+
+function timeAgo(dateStr) {
+  const diff = Date.now() - new Date(dateStr);
+  const d = Math.floor(diff / 86400000);
+  if (d < 1) return 'today';
+  if (d < 7) return `${d}d ago`;
+  if (d < 30) return `${Math.floor(d/7)}w ago`;
+  if (d < 365) return `${Math.floor(d/30)}mo ago`;
+  return `${Math.floor(d/365)}y ago`;
+}
+
+// ── SCROLL ANIMATIONS ────────────────────────────────────────────────────────
+const observer = new IntersectionObserver(
+  entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+  { threshold: 0.12 }
+);
+document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+// ── INIT ─────────────────────────────────────────────────────────────────────
+loadProjects();
+</script>
+</body>
+</html>
